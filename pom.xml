@@ -63,10 +63,10 @@
 	</dependencies>
 	
 	
-
+<packaging>war</packaging>
 	<build>
 		<plugins>
-			<packaging>war</packaging>
+			
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
