@@ -1,16 +1,11 @@
 package com.learn.pmapp.model;
 
 import java.io.Serializable;
-import java.util.Set;
+import javax.persistence.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.util.Set;
 
 
 /**
@@ -33,6 +28,7 @@ public class ParentTask implements Serializable {
 
 	//bi-directional many-to-one association to Task
 	@OneToMany(mappedBy="parentTask")
+	@JsonIgnore
 	private Set<Task> tasks;
 
 	public ParentTask() {

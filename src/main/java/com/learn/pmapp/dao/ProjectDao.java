@@ -20,5 +20,7 @@ public interface ProjectDao {
 	public void deleteProject(Project project);
 
 	public Project findById(int id);
+	
+	public List<Project> findByUserId(int userId);
 
 }

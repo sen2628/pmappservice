@@ -12,5 +12,6 @@ import com.learn.pmapp.model.Task;
  *
  */
 public interface TaskRepository extends JpaRepository<Task, Integer> {
-
+	
+	
 }

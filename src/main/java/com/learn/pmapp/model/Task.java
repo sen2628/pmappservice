@@ -1,22 +1,11 @@
 package com.learn.pmapp.model;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.Set;
+import javax.persistence.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.util.Date;
 
 
 /**
@@ -42,8 +31,8 @@ public class Task implements Serializable {
 	private int priorityId;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="start_dare")
-	private Date startDare;
+	@Column(name="start_date")
+	private Date startDate;
 
 	@Column(name="task_desc")
 	private String taskDesc;
@@ -51,6 +40,7 @@ public class Task implements Serializable {
 	//bi-directional many-to-one association to ParentTask
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="parent_id")
+	@JsonIgnore
 	private ParentTask parentTask;
 
 	//bi-directional many-to-one association to Project
@@ -58,14 +48,16 @@ public class Task implements Serializable {
 	@JoinColumn(name="project_id")
 	private Project project;
 
+	//bi-directional many-to-one association to User
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="task_user_id")
+	@JsonIgnore
+	private User projectUser;
+
 	//bi-directional many-to-one association to Status
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="status_id")
 	private Status status;
-
-	//bi-directional many-to-one association to UserProjectTask
-	@OneToMany(mappedBy="task")
-	private Set<UserProjectTask> userProjectTasks;
 
 	public Task() {
 	}
@@ -94,12 +86,12 @@ public class Task implements Serializable {
 		this.priorityId = priorityId;
 	}
 
-	public Date getStartDare() {
-		return this.startDare;
+	public Date getStartDate() {
+		return this.startDate;
 	}
 
-	public void setStartDare(Date startDare) {
-		this.startDare = startDare;
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
 	}
 
 	public String getTaskDesc() {
@@ -126,34 +118,20 @@ public class Task implements Serializable {
 		this.project = project;
 	}
 
+	public User getProjectUser() {
+		return this.projectUser;
+	}
+
+	public void setProjectUser(User projectUser) {
+		this.projectUser = projectUser;
+	}
+
 	public Status getStatus() {
 		return this.status;
 	}
 
 	public void setStatus(Status status) {
 		this.status = status;
-	}
-
-	public Set<UserProjectTask> getUserProjectTasks() {
-		return this.userProjectTasks;
-	}
-
-	public void setUserProjectTasks(Set<UserProjectTask> userProjectTasks) {
-		this.userProjectTasks = userProjectTasks;
-	}
-
-	public UserProjectTask addUserProjectTask(UserProjectTask userProjectTask) {
-		getUserProjectTasks().add(userProjectTask);
-		userProjectTask.setTask(this);
-
-		return userProjectTask;
-	}
-
-	public UserProjectTask removeUserProjectTask(UserProjectTask userProjectTask) {
-		getUserProjectTasks().remove(userProjectTask);
-		userProjectTask.setTask(null);
-
-		return userProjectTask;
 	}
 
 }

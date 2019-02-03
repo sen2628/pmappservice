@@ -47,4 +47,10 @@ public class ProjectDaoImpl implements ProjectDao {
 		return projectRepository.getOne(id);
 	}
 
+	@Override
+	public List<Project> findByUserId(int userId) {
+		// TODO Auto-generated method stub
+		return projectRepository.findProjectsByUserId(userId);
+	}
+
 }

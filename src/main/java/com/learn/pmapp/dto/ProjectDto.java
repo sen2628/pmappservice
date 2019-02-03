@@ -23,11 +23,11 @@ public class ProjectDto {
 	
 	private int priority;
 	
-	private String status;
-	
 	private int completedTasks;
 	
 	private int totalTasks;
+	
+	private String status;
 
 	/**
 	 * @return the projectId
@@ -114,20 +114,6 @@ public class ProjectDto {
 	}
 
 	/**
-	 * @return the status
-	 */
-	public String getStatus() {
-		return status;
-	}
-
-	/**
-	 * @param status the status to set
-	 */
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
-	/**
 	 * @return the completedTasks
 	 */
 	public int getCompletedTasks() {
@@ -153,6 +139,14 @@ public class ProjectDto {
 	 */
 	public void setTotalTasks(int totalTasks) {
 		this.totalTasks = totalTasks;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 	

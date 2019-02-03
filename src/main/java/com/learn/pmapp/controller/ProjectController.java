@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.learn.pmapp.business.ProjectBusiness;
+import com.learn.pmapp.business.UserBusiness;
 import com.learn.pmapp.dto.ProjectDto;
 import com.learn.pmapp.model.Project;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/project")
 public class ProjectController {
@@ -24,11 +27,13 @@ public class ProjectController {
 	@Autowired
 	public ProjectBusiness projectBusiness;
 	
+	@Autowired
+	public UserBusiness userBusiness;
+	
 
 	@PostMapping("/add")
-	public Project addProject(@RequestBody Project Project) {
-		//todo - need to check unnique employee id
-		return projectBusiness.save(Project);
+	public ProjectDto addProject(@RequestBody ProjectDto projectDto) {
+		return projectBusiness.save(projectDto);
 	}
 	
 	@GetMapping("/")
@@ -37,28 +42,20 @@ public class ProjectController {
 		return projectBusiness.findAll(); 
 	}
 	
-	@GetMapping("/view")
+	@GetMapping("/getAllProjects")
 	public List<ProjectDto> viewProjects() {
 		return projectBusiness.viewProjects();
 	}
 	
 	@PutMapping("/update/{id}")
-	public ResponseEntity<Project> updateProject(@PathVariable(value="id") int id, @RequestBody Project project) {
+	public ResponseEntity<ProjectDto> updateProject(@PathVariable(value="id") int id, @RequestBody ProjectDto projectDto) {
 		Project proj = projectBusiness.findById(id);
 		if (proj == null) {
 			return ResponseEntity.notFound().build();
 		}
+		ProjectDto projUpdated = projectBusiness.save(projectDto);
 		
-		proj.setProjectDesc(project.getProjectDesc());
-		proj.setProjectUser(project.getProjectUser());
-		proj.setStartDate(project.getStartDate());
-		proj.setEndDate(project.getEndDate());
-		proj.setPriorityId(project.getPriorityId());
-		
-		
-		Project empUpdated = projectBusiness.save(proj);
-		
-		return ResponseEntity.ok().body(empUpdated);
+		return ResponseEntity.ok().body(projUpdated);
 	}
 	
 	@DeleteMapping("/delete/{id}")

@@ -16,15 +16,9 @@
 
 	<properties>
 		<java.version>1.8</java.version>
-		<start-class>com.learn.pmapp.ProjManageApplication</start-class>
 	</properties>
 
 	<dependencies>
-		<dependency>
-		    <groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-starter-tomcat</artifactId>
-		    <scope>provided</scope>
-		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
@@ -67,17 +61,13 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-	
-	
-<packaging>war</packaging>
+
 	<build>
 		<plugins>
-			
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			
 		</plugins>
 	</build>
 

@@ -7,7 +7,7 @@ import com.learn.pmapp.model.Project;
 
 public interface ProjectBusiness {
 	
-public Project save(Project project);
+public ProjectDto save(ProjectDto projectDto);
 	
 	public List<Project> findAll();
 	

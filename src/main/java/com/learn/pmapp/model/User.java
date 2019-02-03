@@ -12,6 +12,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 /**
  * The persistent class for the project_user database table.
@@ -37,9 +39,15 @@ public class User implements Serializable {
 	@Column(name="last_name")
 	private String lastName;
 
-	//bi-directional many-to-one association to UserProjectTask
+	//bi-directional many-to-one association to Project
 	@OneToMany(mappedBy="projectUser")
-	private Set<UserProjectTask> userProjectTasks;
+	@JsonIgnore
+	private Set<Project> projects;
+
+	//bi-directional many-to-one association to Task
+	@OneToMany(mappedBy="projectUser")
+	@JsonIgnore
+	private Set<Task> tasks;
 
 	public User() {
 	}
@@ -76,26 +84,48 @@ public class User implements Serializable {
 		this.lastName = lastName;
 	}
 
-	public Set<UserProjectTask> getUserProjectTasks() {
-		return this.userProjectTasks;
+	public Set<Project> getProjects() {
+		return this.projects;
 	}
 
-	public void setUserProjectTasks(Set<UserProjectTask> userProjectTasks) {
-		this.userProjectTasks = userProjectTasks;
+	public void setProjects(Set<Project> projects) {
+		this.projects = projects;
 	}
 
-	public UserProjectTask addUserProjectTask(UserProjectTask userProjectTask) {
-		getUserProjectTasks().add(userProjectTask);
-		userProjectTask.setProjectUser(this);
+	public Project addProject(Project project) {
+		getProjects().add(project);
+		project.setProjectUser(this);
 
-		return userProjectTask;
+		return project;
 	}
 
-	public UserProjectTask removeUserProjectTask(UserProjectTask userProjectTask) {
-		getUserProjectTasks().remove(userProjectTask);
-		userProjectTask.setProjectUser(null);
+	public Project removeProject(Project project) {
+		getProjects().remove(project);
+		project.setProjectUser(null);
 
-		return userProjectTask;
+		return project;
+	}
+
+	public Set<Task> getTasks() {
+		return this.tasks;
+	}
+
+	public void setTasks(Set<Task> tasks) {
+		this.tasks = tasks;
+	}
+
+	public Task addTask(Task task) {
+		getTasks().add(task);
+		task.setProjectUser(this);
+
+		return task;
+	}
+
+	public Task removeTask(Task task) {
+		getTasks().remove(task);
+		task.setProjectUser(null);
+
+		return task;
 	}
 
 }
