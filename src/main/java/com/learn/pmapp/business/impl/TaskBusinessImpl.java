@@ -131,6 +131,7 @@ public class TaskBusinessImpl implements TaskBusiness {
 			dtoTask.setProjectId(task.getProject().getProjectId());
 			dtoTask.setProjectDesc(task.getProject().getProjectDesc());
 			dtoTask.setTaskUserId(task.getProjectUser() != null? task.getProjectUser().getUserId() : 0);
+			dtoTask.setUserName(task.getProjectUser() != null? task.getProjectUser().getFirstName() + ' ' + task.getProjectUser().getLastName() : null);
 			dtoTask.setTaskStartDate(task.getStartDate());
 			dtoTask.setTaskEndDate(task.getEndDate());
 			dtoTask.setTaskStatusId(task.getStatus().getStatusId());

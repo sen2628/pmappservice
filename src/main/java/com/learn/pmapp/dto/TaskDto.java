@@ -14,6 +14,8 @@ public class TaskDto {
 	
 	private int taskUserId;
 	
+	private String userName;
+	
 	private int priority;
 	
 	private int parentId;
@@ -128,6 +130,14 @@ public class TaskDto {
 
 	public void setProjectDesc(String projectDesc) {
 		this.projectDesc = projectDesc;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 

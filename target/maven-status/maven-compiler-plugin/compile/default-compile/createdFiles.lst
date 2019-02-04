@@ -30,5 +30,6 @@ com\learn\pmapp\repository\StatusRepository.class
 com\learn\pmapp\repository\ProjectRepository.class
 com\learn\pmapp\dao\impl\TaskDaoImpl.class
 com\learn\pmapp\model\User.class
+com\learn\pmapp\model\UserProjectTask.class
 com\learn\pmapp\repository\TaskRepository.class
 com\learn\pmapp\model\Project.class
