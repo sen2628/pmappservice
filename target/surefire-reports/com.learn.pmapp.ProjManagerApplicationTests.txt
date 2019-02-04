@@ -1,0 +1,7 @@
+-------------------------------------------------------------------------------
+Test set: com.learn.pmapp.ProjManagerApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in com.learn.pmapp.ProjManagerApplicationTests
+initializationError(com.learn.pmapp.ProjManagerApplicationTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.Exception: No runnable methods
+

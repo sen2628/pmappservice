@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.learn.pmapp.controller.UserControllerAllTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.068 s <<< FAILURE! - in com.learn.pmapp.controller.UserControllerAllTest
+getAllUsers(com.learn.pmapp.controller.UserControllerAllTest)  Time elapsed: 0.032 s  <<< FAILURE!
+java.lang.AssertionError
+	at com.learn.pmapp.controller.UserControllerAllTest.getAllUsers(UserControllerAllTest.java:33)
+

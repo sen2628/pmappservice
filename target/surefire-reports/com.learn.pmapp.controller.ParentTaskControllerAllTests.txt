@@ -1,0 +1,11 @@
+-------------------------------------------------------------------------------
+Test set: com.learn.pmapp.controller.ParentTaskControllerAllTests
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 48.33 s <<< FAILURE! - in com.learn.pmapp.controller.ParentTaskControllerAllTests
+getAllParentTasks(com.learn.pmapp.controller.ParentTaskControllerAllTests)  Time elapsed: 0.422 s  <<< FAILURE!
+java.lang.AssertionError
+	at com.learn.pmapp.controller.ParentTaskControllerAllTests.getAllParentTasks(ParentTaskControllerAllTests.java:32)
+
+getAllProjectsTest(com.learn.pmapp.controller.ParentTaskControllerAllTests)  Time elapsed: 0.047 s  <<< FAILURE!
+java.lang.AssertionError
+

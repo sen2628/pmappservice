@@ -1,0 +1,6 @@
+com\learn\pmapp\controller\UserControllerTest.class
+com\learn\pmapp\ProjManagerApplicationTests.class
+com\learn\pmapp\controller\ParentTaskControllerAllTests.class
+com\learn\pmapp\controller\ProjectControllerAllTest.class
+com\learn\pmapp\controller\TaskControllerAllTests.class
+com\learn\pmapp\controller\UserControllerAllTest.class
